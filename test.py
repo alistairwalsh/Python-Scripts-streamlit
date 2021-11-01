@@ -13,7 +13,10 @@ st.latex('{\displaystyle \sum _{a}W_{ia}h_{a}}\sum _{a}W_{ia}h_{a}')
 #######
 # Load
 #######
-data = pd.read_csv( st.file_uploader("Upload Files",type=['csv']), sep = ';')
-data.dropna(how = 'all')
 
-st.dataframe(data)
+uploaded_file = st.file_uploader("Upload Files",type=['csv'])
+if uploaded_file is not None:
+    data = pd.read_csv(uploaded_file , sep = ';')
+    data.dropna(axis = 'columns', how = 'all', inplace = True)
+
+    st.dataframe(data)
