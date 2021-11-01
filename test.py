@@ -11,11 +11,7 @@ st.latex('{\displaystyle \sum _{a}W_{ia}h_{a}}\sum _{a}W_{ia}h_{a}')
 #######
 # Load
 #######
-@st.cache
-def load_data():
-    # Cache the conversion to prevent computation on every rerun
-    return  st.file_uploader("Upload Files",type=['csv'])
 
-data = load_data()
+data = st.file_uploader("Upload Files",type=['csv'])
 
 st.table(data)
