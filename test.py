@@ -8,13 +8,4 @@ st.write('NMF as a probabilistic graphical model: visible units (V) are connecte
 st.latex('{\displaystyle \sum _{a}W_{ia}h_{a}}\sum _{a}W_{ia}h_{a}')
 
 
-#######
-# Load
-#######
-@st.cache
-def load_data():
-    # Cache the conversion to prevent computation on every rerun
-    uploaded_file = st.file_uploader("Upload Files",type=['csv'])
-    return uploaded_file
-
 data = load_data()
