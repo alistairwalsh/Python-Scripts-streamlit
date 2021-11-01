@@ -17,3 +17,5 @@ def load_data():
     return  st.file_uploader("Upload Files",type=['csv'])
 
 data = load_data()
+
+st.table(data)
