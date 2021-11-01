@@ -1,4 +1,6 @@
 import streamlit as st
+import pandas as pd
+
 st.title("NMF")
 
 st.image('nmf/1920px-Restricted_Boltzmann_machine.svg.png')
@@ -13,5 +15,6 @@ st.latex('{\displaystyle \sum _{a}W_{ia}h_{a}}\sum _{a}W_{ia}h_{a}')
 #######
 
 data = st.file_uploader("Upload Files",type=['csv'])
+data = pd.read_csv(data)
 
 st.table(data)
