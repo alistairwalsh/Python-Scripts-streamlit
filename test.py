@@ -15,4 +15,4 @@ st.latex('{\displaystyle \sum _{a}W_{ia}h_{a}}\sum _{a}W_{ia}h_{a}')
 #######
 data = pd.read_csv( st.file_uploader("Upload Files",type=['csv']))
 
-st.dataframe(data)
+st.dataframe(data, sep = ';')
