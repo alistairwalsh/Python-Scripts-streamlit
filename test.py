@@ -23,21 +23,21 @@ if uploaded_file is not None:
     data = pd.read_csv(uploaded_file , sep = ';')
 
     st.dataframe(data)
-
+    st.header('missing value count')
     st.write(data.isna().sum())
 
     newdata = data.select_dtypes(include=np.number)
-
+    st.header('values all numeric')
     st.write(data.equals(newdata))
 
     X = data.iloc[:,1:]
 
     var_table = X.var()
-    st.header("Variability")
-    st.write(var_table)
-    st.header('Items with no variability')
+    #st.header("Variability")
+    #st.write(var_table)
+    #st.header('Items with no variability')
     no_var_list = var_table[var_table == 0].index.tolist()
-    st.write(no_var_list)
+    #st.write(no_var_list)
 
     X.drop(columns = no_var_list, inplace = True)
 
@@ -58,6 +58,9 @@ if uploaded_file is not None:
     W = model.fit_transform(X)
     H = model.components_
     Err = model.reconstruction_err_
+
+    st.write('Model reconstruction error')
+    st.write(Err)
 
     hm_cols =  X.columns
     st.write(pd.DataFrame(H, columns = hm_cols))
@@ -99,3 +102,18 @@ if uploaded_file is not None:
     fig = sns.pairplot(df_W, hue = 'group')
 
     st.pyplot(fig)
+
+    @st.cache
+    def convert_df(data):
+        data['group'] = kmeans.labels_
+    # Cache the conversion to prevent computation on every rerun
+        return data.to_csv(index=False).encode('utf-8')
+
+    csv = convert_df(df_W)
+
+    st.download_button(
+        label="Press to Download",
+        data=csv,
+        file_name='components_weight.csv',
+        mime='text/csv'
+    )
