@@ -85,7 +85,7 @@ if uploaded_file is not None:
 
     number_clusters = 3
 
-    number_clusters = st.number_input('Number of clusters', step = 1)
+    number_clusters = st.number_input('Number of clusters', step = 1, min_value=2)
 
     kmeans = KMeans(n_clusters=number_clusters, random_state=0).fit(W)
 
