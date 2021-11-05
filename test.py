@@ -83,7 +83,7 @@ if uploaded_file is not None:
 
     st.write(W)
 
-    number_clusters = 3
+    number_clusters = 2
 
     number_clusters = st.number_input('Number of clusters', step = 1, min_value=2)
 
