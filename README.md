@@ -18,3 +18,6 @@ Note that this can be computationally costly, because the NMF has to be repeated
 Of course all the usual principles of cross-validation apply here, so one can leave out many cells at a time (instead of only a single one), and/or repeat the procedure for only some random cells instead of looping over all cells. Both approaches can help accelerating the process.
 
 Edit (Mar 2019): See this very nice illustrated write-up by @AlexWilliams: http://alexhwilliams.info/itsneuronalblog/2018/02/26/crossval. Alex uses https://github.com/kimjingu/nonnegfac-python for NMF with missing values.
+
+
+cross validation for finding K latent features https://towardsdatascience.com/how-to-use-cross-validation-for-matrix-completion-2b14103d2c4c
